@@ -3,6 +3,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'pastadetail/:id',
+    loadChildren: () => import('./pastadetail/pastadetail.module').then( m => m.PastadetailPageModule)
+  },
+  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
@@ -31,6 +35,14 @@ const routes: Routes = [
         { path: 'setting', loadChildren: () => import('./setting/setting.module').then(m => m.SettingPageModule) },
       ]
     },
+  {
+    path: 'pasta',
+    loadChildren: () => import('./pasta/pasta.module').then( m => m.PastaPageModule)
+  },
+  {
+    path: 'pastadetail',
+    loadChildren: () => import('./pastadetail/pastadetail.module').then( m => m.PastadetailPageModule)
+  },
     
 ];
 
