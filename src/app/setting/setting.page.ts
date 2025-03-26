@@ -7,10 +7,24 @@ import { Component, OnInit } from '@angular/core';
   standalone: false
 })
 export class SettingPage implements OnInit {
+  imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
+  password = '';
+  hasMinLength = false;
+  hasNumber = false;
+  hasSpecialChar = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  updateImageUrl(event: any) {
+    this.imageUrl = event.target.value;
+  }
+
+  checkPassword() {
+    this.hasMinLength = this.password.length > 6;
+    this.hasNumber = /\d/.test(this.password);
+    this.hasSpecialChar = /[!@#$%^&*()]/.test(this.password);
   }
 
 }

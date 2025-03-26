@@ -16,7 +16,28 @@
 
     </ion-header>
 
-    <div id="container" style="display: flex; justify-content: center; align-items: center; height: 100%;">
-      <p>Setting</p>
-    </div>
+    <ion-list lines="full">
+        <ion-item>
+            <ion-input labelPlacement="floating" label="Masukkan URL gambar : " [(ngModel)]="imageUrl"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-img [src]="imageUrl"></ion-img>
+        </ion-item>
+        <ion-item>
+            <ion-input placeholder="Masukkan Password" [(ngModel)]="password" (ngModelChange)="checkPassword()"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-checkbox slot="start" [checked]="hasMinLength"></ion-checkbox>
+            <ion-label>More than 6 Characters</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox slot="start" [checked]="hasNumber"></ion-checkbox>
+            <ion-label>Include Number</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-checkbox slot="start" [checked]="hasSpecialChar"></ion-checkbox>
+            <ion-label>Include Special Characters (!&#64;#$%^&*)</ion-label>
+        </ion-item>
+    </ion-list>
 </ion-content>
