@@ -14,16 +14,23 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-card>
-    <img [src]="pastas[index].url" alt="{{ pastas[index] . name }}" style="width: 100%; height: auto;">
+  <ion-card *ngIf="pasta?.name">
+    <img [src]="pasta.url" alt="{{ pasta.name }}" style="width: 100%; height: auto;">
     <ion-card-header>
-        <ion-card-title>{{ pastas[index] . name }}</ion-card-title>
-        <ion-card-subtitle>
-            <p><strong>Rp {{ pastas[index] . price }}</strong></p>
-        </ion-card-subtitle>
+      <ion-card-title>{{ pasta.name }}</ion-card-title>
+      <ion-card-subtitle>
+        <p><strong>Rp {{ pasta.price }}</strong></p>
+      </ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-        <p>{{ pastas[index] . description }}</p>
+      <p>{{ pasta.description }}</p>
+
+      <ion-label>Pasta Recipe Instruction:</ion-label>
+      <ol>
+        <li *ngFor="let ins of pasta.instructions">
+          {{ ins.instruction }}
+        </li>
+      </ol>
     </ion-card-content>
   </ion-card>
 </ion-content>

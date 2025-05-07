@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FoodserviceService } from '../foodservice.service';
+
 @Component({
   selector: 'app-pasta',
   templateUrl: './pasta.page.html',
@@ -7,15 +8,26 @@ import { FoodserviceService } from '../foodservice.service';
   standalone: false,
 })
 export class PastaPage implements OnInit {
-  jenistampilan: string = 'accordion'; 
-  
+  jenistampilan: string = 'accordion';
 
-  pastas:any[]=[]
-  
-  constructor(private foodservice: FoodserviceService) { }
+  pastas: any[] = [];
+  filteredPastas: any[] = [];
+  searchText: string = '';
+
+  constructor(private foodservice: FoodserviceService) {}
 
   ngOnInit() {
-    this.pastas=this.foodservice.pastas
+    this.foodservice.pastaList().subscribe((data) => {
+      this.pastas = data;
+      this.filteredPastas = data; // inisialisasi awal
+    });
+  }
+
+  onSearchChange() {
+    const keyword = this.searchText.toLowerCase();
+    this.filteredPastas = this.pastas.filter(pasta =>
+      pasta.name.toLowerCase().includes(keyword)
+    );
   }
 
   chunkArray(array: any[], chunkSize: number): any[] {

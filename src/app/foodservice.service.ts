@@ -1,12 +1,26 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FoodserviceService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
+  pastaList():Observable<any> {
+    return this.http.get("https://ubaya.xyz/hybrid/160422124/pastas.php");
+  }
+
+  searchPastas(keyword: string): Observable<any> {
+    return this.http.get(`https://ubaya.xyz/hybrid/160422124/pastas.php?search=${keyword}`);
+  }
+  
+  pastaDetail(id:number):Observable<any> {
+    return this.http.get("https://ubaya.xyz/hybrid/160422124/pasta_detail.php?id="+id);
+  }
+  
   addPasta(p_name: string, p_url: string, p_description: string, p_price: number, p_spicy: boolean = false)
   {
     this.pastas.push({name:p_name, url:p_url,
