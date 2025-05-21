@@ -34,6 +34,30 @@ export class FoodserviceService {
     "https://ubaya.xyz/hybrid/160422124/new_pasta.php", urlEncodedData, { headers });
   }
 
+  updatePasta(p_id:number,p_name:string,p_url:string,p_description:string,p_price:number)
+  {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('id', p_id.toString());
+    body.set('name', p_name);
+    body.set('desc', p_description);
+    body.set('url', p_url);
+    body.set('price', p_price.toString());
+    const urlEncodedData = body.toString();
+
+    return this.http.post("https://ubaya.xyz/hybrid/160422124/update_pasta.php", urlEncodedData, { headers });
+  }
+
+  deletePasta(p_id:number)
+  {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('id', p_id.toString()); const urlEncodedData = body.toString();
+    
+    return this.http.post("https://ubaya.xyz/hybrid/160422124/delete_pasta.php", urlEncodedData, { headers });
+  }
+
+
 
 
   pastas = [  
