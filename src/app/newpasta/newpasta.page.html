@@ -1,61 +1,53 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-      <ion-title>New Pasta</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>New Pasta</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list>
-      <!-- Pasta Name -->
-      <ion-item>
-          <ion-label position="stacked">Pasta Name</ion-label>
-          <ion-input [(ngModel)]="new_name" labelPlacement="floating" placeholder="Enter pasta name"></ion-input>
-      </ion-item>
+    <ion-list>
+        <!-- Pasta Name -->
+        <ion-item>
+            <ion-label position="stacked">Pasta Name</ion-label>
+            <ion-input [(ngModel)]="new_name" labelPlacement="floating" placeholder="Enter pasta name"></ion-input>
+        </ion-item>
 
-      <!-- Pasta Description -->
-      <ion-item>
-          <ion-label position="stacked">Pasta Description</ion-label>
-          <ion-textarea [(ngModel)]="new_desc" labelPlacement="floating" placeholder="Enter pasta description"></ion-textarea>
-      </ion-item>
+        <!-- Pasta Description -->
+        <ion-item>
+            <ion-label position="stacked">Pasta Description</ion-label>
+            <ion-textarea [(ngModel)]="new_desc" labelPlacement="floating"
+                placeholder="Enter pasta description"></ion-textarea>
+        </ion-item>
 
-      <!-- Pasta Price -->
-      <ion-item>
-          <ion-label position="stacked">Pasta Price</ion-label>
-          <ion-select [(ngModel)]="new_price" labelPlacement="floating" placeholder="Select price">
-              <ion-select-option *ngFor="let price of arr_price" [value]="price">
-                  {{ price }}
-              </ion-select-option>
-          </ion-select>
-      </ion-item>
+        <!-- Pasta Price -->
+        <ion-item>
+            <ion-label position="stacked">Pasta Price</ion-label>
+            <ion-input [(ngModel)]="new_price" labelPlacement="floating" placeholder="Enter price" type="number"
+                inputmode="decimal"></ion-input>
+        </ion-item>
 
-      <!-- Is Spicy -->
-      <ion-item>
-        <ion-label>Is Spicy</ion-label>
-        <ion-checkbox [(ngModel)]="new_spicy" slot="start"></ion-checkbox>
-      </ion-item>
-      <!-- Pasta Image URL -->
-      <ion-item>
-          <ion-label position="stacked">Pasta Image URL</ion-label>
-          <ion-input [(ngModel)]="new_url" labelPlacement="floating" placeholder="Enter image URL"></ion-input>
-      </ion-item>
+        <!-- Is Spicy -->
+        <ion-item>
+            <ion-label>Is Spicy</ion-label>
+            <ion-checkbox [(ngModel)]="new_spicy" slot="start"></ion-checkbox>
+        </ion-item>
+        <!-- Pasta Image URL -->
+        <ion-item>
+            <ion-label position="stacked">Pasta Image URL</ion-label>
+            <ion-input [(ngModel)]="new_url" labelPlacement="floating" placeholder="Enter image URL"></ion-input>
+        </ion-item>
 
-      <!-- Image Preview -->
-      <ion-item *ngIf="new_url">
-          <ion-img [src]="new_url" style="max-height: 100%; width: 100%;" *ngIf="new_url"></ion-img>
-      </ion-item>
+        <!-- Image Preview -->
+        <ion-item *ngIf="new_url">
+            <ion-img [src]="new_url" style="max-height: 100%; width: 100%;" *ngIf="new_url"></ion-img>
+        </ion-item>
 
-      <!-- Submit Button -->
-      <ion-item>
-          <ion-button expand="block" (click)="submitpasta()">Save</ion-button>
-          <ion-button id="present-alert">Click Me</ion-button>
-          <ion-alert
-            trigger="present-alert"
-            header="Alert"
-            subHeader="Important message"
-            message="Pasta berhasil tersimpan!"
-            [buttons]="alertButtons"
-          ></ion-alert>
+        <!-- Submit Button -->
+        <ion-item>
+            <ion-button expand="block" (click)="submitpasta()">Save</ion-button>
+            <ion-alert trigger="present-alert" header="Alert" subHeader="Important message"
+                message="Pasta berhasil tersimpan!" [buttons]="alertButtons"></ion-alert>
 
-      </ion-item>
-  </ion-list>
+        </ion-item>
+    </ion-list>
 </ion-content>

@@ -23,6 +23,13 @@ export class PastaPage implements OnInit {
     });
   }
 
+  ionViewWillEnter() {
+    this.foodservice.pastaList().subscribe((data) => {
+      this.pastas = data;
+    })
+  }
+
+
   onSearchChange() {
     const keyword = this.searchText.toLowerCase();
     this.filteredPastas = this.pastas.filter(pasta =>

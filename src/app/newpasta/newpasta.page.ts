@@ -35,9 +35,20 @@ export class NewpastaPage implements OnInit {
   }
 
 
-  submitpasta() {
-    this.foodservice.addPasta(this.new_name,this.new_url,this.new_desc,this.new_price, this.new_spicy)
+  submitpasta()
+  {
+    this.foodservice.addPasta(this.new_name,            
+        this.new_url,this.new_desc,this.new_price).subscribe((response: any) => {
+          if(response.result==='success'){
+            alert("success")
+          }
+          else
+          {
+            alert(response.message)
+          }
+    });
   }
+
 
   
 

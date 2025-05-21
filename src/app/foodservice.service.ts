@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -21,11 +21,19 @@ export class FoodserviceService {
     return this.http.get("https://ubaya.xyz/hybrid/160422124/pasta_detail.php?id="+id);
   }
   
-  addPasta(p_name: string, p_url: string, p_description: string, p_price: number, p_spicy: boolean = false)
+  addPasta(p_name:string,p_url:string,p_description:string,p_price:number)
   {
-    this.pastas.push({name:p_name, url:p_url,
-      description:p_description,price:p_price,spicy:p_spicy})
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('name', p_name);
+    body.set('desc', p_description);
+    body.set('url', p_url);
+    body.set('price', p_price.toString());
+    const urlEncodedData = body.toString();
+    return this.http.post(
+    "https://ubaya.xyz/hybrid/160422124/new_pasta.php", urlEncodedData, { headers });
   }
+
 
 
   pastas = [  
