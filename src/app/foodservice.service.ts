@@ -57,6 +57,18 @@ export class FoodserviceService {
     return this.http.post("https://ubaya.xyz/hybrid/160422124/delete_pasta.php", urlEncodedData, { headers });
   }
 
+  addInstruction(p_id:number, step:number, instruction:string)
+  {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('pasta_id', p_id.toString());
+    body.set('step', step.toString());
+    body.set('instruction', instruction);
+    const urlEncodedData = body.toString();
+    
+    return this.http.post("https://ubaya.xyz/hybrid/160422124/new_instruction.php", urlEncodedData, { headers });
+  }
+
 
 
 
