@@ -12,6 +12,17 @@ export class FoodserviceService {
     return this.http.get('https://ubaya.xyz/hybrid/160422124/posisi_xy.php');
   }
 
+  uploadImage(p_name:string, p_base64:string)
+  {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('name', p_name.toString());
+    body.set('base64', p_base64.toString());
+    const urlEncodedData = body.toString();
+    return this.http.post("https://ubaya.xyz/hybrid/160422124/upload_image.php", urlEncodedData, { headers });
+  }
+
+
   updateMyPosition(lat: number, lon: number) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
